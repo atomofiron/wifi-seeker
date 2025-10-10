@@ -97,7 +97,10 @@ class Point private constructor(): Parcelable {
     private fun specifyEnc(capabilities: String) {
         enc = "OPN"
         encColor = green
-        if (capabilities.contains("WPA")) {
+        if (capabilities.contains("SAE-")) {
+            enc = if (capabilities.contains("WPA2")) "WPA2/3" else "WPA3"
+            encColor = jinx
+        } else if (capabilities.contains("WPA")) {
             enc = if (capabilities.contains("WPA2")) "WPA2" else "WPA"
             encColor = yellow_middle
         } else if (capabilities.contains("WEP")) {
@@ -154,6 +157,7 @@ class Point private constructor(): Parcelable {
         private var blue_light = 0
         private var green = 0
         private var yellow_middle = 0
+        private var jinx = 0
         private var sky_light = 0
         private var red_light = 0
         private var sky = 0
@@ -173,6 +177,7 @@ class Point private constructor(): Parcelable {
             blue_light = ContextCompat.getColor(co, R.color.blue_light)
             green = ContextCompat.getColor(co, R.color.green)
             yellow_middle = ContextCompat.getColor(co, R.color.yellow_middle)
+            jinx = ContextCompat.getColor(co, R.color.jinxs_eyes)
             sky_light = ContextCompat.getColor(co, R.color.sky_light)
             red_light = ContextCompat.getColor(co, R.color.red_light)
             sky = ContextCompat.getColor(co, R.color.sky)
