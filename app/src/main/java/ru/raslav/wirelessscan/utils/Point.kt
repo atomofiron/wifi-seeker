@@ -85,7 +85,7 @@ class Point private constructor(): Parcelable {
 
     private fun parseFrequency(frequency: Int) {
         ch = getChanel(frequency)
-        chColor = if (is5G()) blue_light else grey
+        chColor = if (is5G()) blue_light else gray
     }
 
     private fun parseCapabilities(capabilities: String) {
@@ -113,7 +113,7 @@ class Point private constructor(): Parcelable {
 
     private fun specifyChi(capabilities: String) {
         chi = if (capabilities.contains("CCMP")) "CCMP" else ""
-        chiColor = grey
+        chiColor = gray
 
         if (capabilities.contains("TKIP")) {
             chi = if (chi.isEmpty()) "  TKIP" else "+TKIP"
@@ -153,7 +153,7 @@ class Point private constructor(): Parcelable {
             private set
 
         private var red_middle = 0
-        var grey = 0; private set
+        var gray = 0; private set
         private var blue_light = 0
         private var green = 0
         private var yellow_middle = 0
@@ -173,7 +173,7 @@ class Point private constructor(): Parcelable {
             red_lite = ContextCompat.getColor(co, R.color.red_lite)
             red_dark_lite = ContextCompat.getColor(co, R.color.red_dark_lite)
             red_middle = ContextCompat.getColor(co, R.color.red_middle)
-            grey = ContextCompat.getColor(co, R.color.grey)
+            gray = ContextCompat.getColor(co, R.color.gray)
             blue_light = ContextCompat.getColor(co, R.color.blue_light)
             green = ContextCompat.getColor(co, R.color.green)
             yellow_middle = ContextCompat.getColor(co, R.color.yellow_middle)

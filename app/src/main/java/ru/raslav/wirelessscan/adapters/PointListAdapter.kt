@@ -58,7 +58,7 @@ class PointListAdapter(context: Context) : BaseAdapter(), View.OnAttachStateChan
     private val closeDescription: (View) -> Unit = { resetFocus() }
     private var filtering = false
     private val focusedDrawable = SideDrawable(
-        ContextCompat.getColor(context, R.color.grey),
+        ContextCompat.getColor(context, R.color.gray),
         context.resources.getDimension(R.dimen.one),
     )
     private val holders = mutableListOf<Holder>()
@@ -123,11 +123,11 @@ class PointListAdapter(context: Context) : BaseAdapter(), View.OnAttachStateChan
         holder.essid.setTextColor(when {
             connected -> Point.green_light
             point.essid.isEmpty() -> Point.yellow
-            else -> Point.grey
+            else -> Point.gray
         })
 
         holder.bssid.text = point.bssid
-        holder.bssid.setTextColor(if (connected) Point.green_light else Point.grey)
+        holder.bssid.setTextColor(if (connected) Point.green_light else Point.gray)
         holder.bssid.isVisible = holder.root.resources.configuration.isWide()
     }
 
