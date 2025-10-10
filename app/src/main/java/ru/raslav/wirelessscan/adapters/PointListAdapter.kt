@@ -112,8 +112,8 @@ class PointListAdapter(context: Context) : BaseAdapter(), View.OnAttachStateChan
         holder.enc.text = point.enc
         holder.enc.setTextColor(point.encColor)
 
-        holder.chi.text = point.chi
-        holder.chi.setTextColor(point.chiColor)
+        holder.cip.text = point.cip
+        holder.cip.setTextColor(point.cipColor)
 
         holder.wps.text = point.wps
         holder.wps.setTextColor(point.wpsColor)

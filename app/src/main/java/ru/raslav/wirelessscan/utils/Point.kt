@@ -51,7 +51,7 @@ class Point private constructor(): Parcelable {
     var ch = 0
     lateinit var enc: String
         private set
-    lateinit var chi: String
+    lateinit var cip: String
         private set
     lateinit var wps: String
         private set
@@ -67,7 +67,7 @@ class Point private constructor(): Parcelable {
         private set
     var encColor = 0
         private set
-    var chiColor = 0
+    var cipColor = 0
         private set
     var wpsColor = 0
         private set
@@ -90,7 +90,7 @@ class Point private constructor(): Parcelable {
 
     private fun parseCapabilities(capabilities: String) {
         specifyEnc(capabilities)
-        specifyChi(capabilities)
+        specifyCip(capabilities)
         specifyWps(capabilities)
     }
 
@@ -111,13 +111,13 @@ class Point private constructor(): Parcelable {
             encColor = red_light
     }
 
-    private fun specifyChi(capabilities: String) {
-        chi = if (capabilities.contains("CCMP")) "CCMP" else ""
-        chiColor = gray
+    private fun specifyCip(capabilities: String) {
+        cip = if (capabilities.contains("CCMP")) "CCMP" else ""
+        cipColor = gray
 
         if (capabilities.contains("TKIP")) {
-            chi = if (chi.isEmpty()) "  TKIP" else "+TKIP"
-            chiColor = if (capabilities.contains("preauth")) sky else sky_white
+            cip = if (cip.isEmpty()) "  TKIP" else "+TKIP"
+            cipColor = if (capabilities.contains("preauth")) sky else sky_white
         }
     }
 
