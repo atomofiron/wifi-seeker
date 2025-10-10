@@ -89,14 +89,14 @@ class Point private constructor(): Parcelable {
     }
 
     private fun parseCapabilities(capabilities: String) {
-        specifyEnc(capabilities)
-        specifyCip(capabilities)
+        val cip = specifyCip(capabilities)
+        specifyEnc(capabilities, cip)
         specifyWps(capabilities)
     }
 
-    private fun specifyEnc(capabilities: String) {
-        enc = "OPN"
-        encColor = green
+    private fun specifyEnc(capabilities: String, cip: Boolean) {
+        enc = if (cip) "IKD" else "OPN"
+        encColor = if (cip) gray else green
         if (capabilities.contains("SAE-")) {
             enc = if (capabilities.contains("WPA2")) "WPA2/3" else "WPA3"
             encColor = jinx
@@ -111,7 +111,7 @@ class Point private constructor(): Parcelable {
             encColor = red_light
     }
 
-    private fun specifyCip(capabilities: String) {
+    private fun specifyCip(capabilities: String): Boolean {
         cip = if (capabilities.contains("CCMP")) "CCMP" else ""
         cipColor = gray
 
@@ -119,6 +119,7 @@ class Point private constructor(): Parcelable {
             cip = if (cip.isEmpty()) "  TKIP" else "+TKIP"
             cipColor = if (capabilities.contains("preauth")) sky else sky_white
         }
+        return cip.isNotEmpty()
     }
 
     private fun specifyWps(capabilities: String) {
